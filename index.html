@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emika Yamaguchi</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="wordmark">EMIKA<span>·</span>YAMAGUCHI</div>
+    <nav class="tabs" id="tabs">
+      <button data-target="profile" class="active"><span class="num">01</span>Profile</button>
+      <button data-target="photo"><span class="num">02</span>Photo</button>
+      <button data-target="webservice"><span class="num">03</span>Web Service</button>
+      <button data-target="youtube"><span class="num">04</span>YouTube</button>
+      <button data-target="blog"><span class="num">05</span>Blog</button>
+      <button data-target="homepage"><span class="num">06</span>Home Page</button>
+      <button data-target="other"><span class="num">07</span>Other</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 01 PROFILE -->
+  <section class="frame active" id="frame-profile">
+    <div class="profile-grid">
+      <div>
+        <div class="profile-photo-wrap">
+          <img src="assets/profile.jpg" alt="Emika Yamaguchi">
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow mono">PROFILE</p>
+        <p class="name-jp">山口笑加</p>
+        <p class="name-romaji mono">Emika Yamaguchi</p>
+        <div class="bio">
+          <p>新卒からシステムテスト・一般事務・製造業など幅広い職種を経験。趣味で初めての開発で、Webサービスの読書管理アプリ「栞」をClaude Codeで開発・リリース。またYouTubeチャンネル運営・note執筆など多岐にわたり活動中。</p>
+          <p>写真歴10年以上。舞台撮影をメインに、ライブ・風景・動物など幅広く撮影。読売写真クラブ最優秀賞受賞。</p>
+          <p class="work-note">お仕事のご相談やコラボのお声がけもお待ちしています。</p>
+          <p class="contact-note">お問合せはこちら。<br>
+          アドレス：7jkha.5nt@gmail.com<br>
+          インスタ：https://www.instagram.com/3m1k4_photo/</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PHOTO -->
+  <section class="frame" id="frame-photo">
+    <div class="frame-head"><span class="tag mono">02</span><h2>Photo</h2></div>
+    <p class="frame-sub mono">10+ YEARS BEHIND THE CAMERA</p>
+
+    <div class="photo-feature">
+      <div class="pic">
+        <img src="assets/photo-feature.jpg" alt="読売写真クラブ最優秀賞受賞作品">
+        <span class="award-label mono">読売写真クラブ 最優秀賞受賞作品</span>
+      </div>
+      <div class="text">
+        <p class="photo-desc">
+          写真歴10年以上。舞台撮影をメインに、ライブ・風景・動物・祭りなど幅広く撮影。<br><br>
+          劇団鳥獣戯画の舞台を2012年より約12年間担当。読売写真クラブにて最優秀賞・入選など複数受賞。PIXTAにて写真販売中。
+        </p>
+        <div class="foot-row" style="margin-top:24px;">
+          <img class="qr-box" src="assets/photo-pixta-qr.jpg" style="width:90px; height:90px;" alt="Instagram QR">
+          <div class="link-col">
+            <a class="btn" href="https://www.instagram.com/3m1k4_photo/" target="_blank">Instagramを見る</a>
+            <span class="url-text">URL: https://www.instagram.com/3m1k4_photo/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="frame-sub mono gallery-label">GALLERY</p>
+    <div class="gallery" id="photo-gallery"></div>
+  </section>
+
+  <!-- 03 WEB SERVICE -->
+  <section class="frame" id="frame-webservice">
+    <div class="frame-head"><span class="tag mono">03</span><h2>Web Service</h2></div>
+    <p class="frame-sub mono">SHIORI — READING MANAGEMENT APP</p>
+
+    <p class="title-lg">読書管理「栞」</p>
+    <p class="desc-md">本の記録から読書メモまで、Googleアカウントで同期できるシンプルな読書管理サービス。初めてClaude Codeで作成。現在公開中。</p>
+
+    <div class="shots-grid">
+      <img src="assets/shiori-01.jpg" onclick="openOverlay(this.src)">
+      <img src="assets/shiori-02.jpg" onclick="openOverlay(this.src)">
+      <img src="assets/shiori-03.jpg" onclick="openOverlay(this.src)">
+      <img src="assets/shiori-04.jpg" onclick="openOverlay(this.src)">
+    </div>
+    <p class="shots-caption mono">※クリックして拡大</p>
+
+    <div class="features-block">
+      <p class="features-title">ちょうどいい、6つの機能。</p>
+      <p class="features-sub">余分な機能は要らない。読書に集中できる設計。</p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <p class="feature-num mono">01</p>
+          <p class="feature-name">ISBN自動登録</p>
+          <p class="feature-desc">番号入力だけで書名・著者・表紙を自動取得。</p>
+        </div>
+        <div class="feature-item">
+          <p class="feature-num mono">02</p>
+          <p class="feature-name">読書ステータス管理</p>
+          <p class="feature-desc">読みたい・読書中・積読・読了の4段階で管理。</p>
+        </div>
+        <div class="feature-item">
+          <p class="feature-num mono">03</p>
+          <p class="feature-name">カスタマイズできるメモ</p>
+          <p class="feature-desc">ページ番号・重要度タグ付きでメモを記録。</p>
+        </div>
+        <div class="feature-item">
+          <p class="feature-num mono">04</p>
+          <p class="feature-name">本棚ビュー</p>
+          <p class="feature-desc">表紙がグリッドで並ぶ本棚表示に切り替え可能。</p>
+        </div>
+        <div class="feature-item">
+          <p class="feature-num mono">05</p>
+          <p class="feature-name">Googleアカウントで同期</p>
+          <p class="feature-desc">サインインだけで全データを自動同期。</p>
+        </div>
+        <div class="feature-item">
+          <p class="feature-num mono">06</p>
+          <p class="feature-name">検索・フィルター</p>
+          <p class="feature-desc">タイトル・著者・タグで検索、絞り込みも可能。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tags-row tags-row-spaced">
+      <span>Flutter</span><span>Firebase</span><span>Kotlin</span><span>Android Studio</span><span>Visual Studio Code</span>
+    </div>
+
+    <div class="foot-row">
+      <div class="qr-box" id="qr-shiori"></div>
+      <div class="link-col">
+        <a class="btn" href="https://shiori-official.digitalhack-note.com/" target="_blank">栞を見る</a>
+        <span class="url-text">URL: https://shiori-official.digitalhack-note.com/</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 YOUTUBE -->
+  <section class="frame" id="frame-youtube">
+    <div class="frame-head"><span class="tag mono">04</span><h2>YouTube</h2></div>
+    <p class="frame-sub mono">TWO CHANNELS — TWO PERSPECTIVES</p>
+
+    <div class="yt-item">
+      <div class="yt-pic"><img src="assets/youtube-waraka.jpg" alt="わらかちゃんねる"></div>
+      <div class="yt-text">
+        <div class="yt-head">
+          <p class="title-lg">わらかちゃんねる</p>
+          <p class="desc-md">ガジェット好き目線でのレビュー・開封・ミニマル生活を発信。登録者数547人・143本。</p>
+        </div>
+        <div class="foot-row">
+          <div class="qr-box" id="qr-yt-waraka"></div>
+          <div class="link-col">
+            <a class="btn" href="https://www.youtube.com/@waraka_channel" target="_blank">YouTubeを見る</a>
+            <span class="url-text">URL: https://www.youtube.com/@waraka_channel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="yt-item">
+      <div class="yt-pic"><img src="assets/youtube-okajo.jpg" alt="オカ女ちゃんねる"></div>
+      <div class="yt-text">
+        <div class="yt-head">
+          <p class="title-lg">オカ女〜オカルト好き女子の陰謀論雑学ch</p>
+          <p class="desc-md">オカルト・陰謀論・仮想現実など独自視点で掘り下げる。登録者数1,160人・495本。</p>
+        </div>
+        <div class="foot-row">
+          <div class="qr-box" id="qr-yt-okajo"></div>
+          <div class="link-col">
+            <a class="btn" href="https://www.youtube.com/@okajo_conspiracy" target="_blank">YouTubeを見る</a>
+            <span class="url-text">URL: https://www.youtube.com/@okajo_conspiracy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tags-row">
+      <span>Vrew</span><span>YMM</span>
+    </div>
+  </section>
+
+  <!-- 07 OTHER -->
+  <section class="frame" id="frame-other">
+    <div class="frame-head"><span class="tag mono">07</span><h2>Other</h2></div>
+    <p class="frame-sub mono">STICKERS &amp; CHAT SERVICE</p>
+
+    <div class="note-grid other-grid">
+      <article class="note-item other-item">
+        <div class="note-head">
+          <p class="note-cat">LINE Stickers</p>
+          <p class="title-lg" style="font-size:18px;">わらかのLINE スタンプ・絵文字</p>
+          <p class="desc-md">ビリヤード鳥や日常で使いやすいスタンプ・絵文字を販売中。</p>
+        </div>
+        <div class="foot-row">
+          <div class="qr-box" id="qr-line-stickers"></div>
+          <div class="link-col">
+            <a class="btn" href="https://store.line.me/stickershop/author/5413770/ja" target="_blank" rel="noopener noreferrer">LINE STOREを見る</a>
+            <span class="url-text">URL: store.line.me/stickershop/author/5413770/ja</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="note-item other-item">
+        <div class="note-head">
+          <p class="note-cat">Chat Service</p>
+          <p class="title-lg" style="font-size:18px;">雑談・愚痴・相談を10往復チャットでお聞きします</p>
+          <p class="desc-md">電話・顔出しなし。LINE感覚で気軽に話せる、文字だけのお話し相手です。</p>
+        </div>
+        <div class="foot-row">
+          <div class="qr-box" id="qr-coconala-chat"></div>
+          <div class="link-col">
+            <a class="btn" href="https://coconala.com/services/4356222" target="_blank" rel="noopener noreferrer">ココナラを見る</a>
+            <span class="url-text">URL: coconala.com/services/4356222</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 05 BLOG -->
+  <section class="frame" id="frame-blog">
+    <div class="frame-head"><span class="tag mono">05</span><h2>Blog</h2></div>
+    <p class="frame-sub mono">WAKA-LOG — WORDPRESS</p>
+
+    <p class="title-lg">笑ログ</p>
+    <p class="desc-md">AI・デジタル・オカルトまで、気になったことを幅広く発信するWordPressブログ。</p>
+    <div class="media-block"><a href="https://digitalhack-note.com/" target="_blank"><img src="assets/blog-digitalhack.png" alt="笑ログ"></a></div>
+
+    <div class="tags-row">
+      <span>WordPress</span><span>HTML/CSS</span><span>Claude</span><span>Gemini</span>
+    </div>
+
+    <div class="foot-row" style="margin-top:24px;">
+      <div class="qr-box" id="qr-blog"></div>
+      <div class="link-col">
+        <a class="btn" href="https://digitalhack-note.com/" target="_blank">笑ログを見る</a>
+        <span class="url-text">URL: https://digitalhack-note.com/</span>
+      </div>
+    </div>
+
+    <hr class="section-rule">
+
+    <p class="title-lg" style="margin-bottom:32px;">Note</p>
+    <div class="note-grid">
+      <div class="note-item">
+        <div class="note-head">
+          <p class="note-cat">Gadget / Minimal</p>
+          <p class="title-lg" style="font-size:18px;">ゆるミニマリストわらか</p>
+          <p class="desc-md">ガジェット・ミニマル生活・AIツール活用など日常の気づきを発信。</p>
+          <img src="assets/blog-waraka.jpg" alt="ゆるミニマリストわらか">
+        </div>
+        <div class="foot-row">
+          <div class="qr-box" id="qr-note-waraka"></div>
+          <div class="link-col">
+            <a class="btn" href="https://note.com/waraka_minimal" target="_blank">noteを見る</a>
+            <span class="url-text">URL: https://note.com/waraka_minimal</span>
+          </div>
+        </div>
+      </div>
+      <div class="note-item">
+        <div class="note-head">
+          <p class="note-cat">Occult / Conspiracy</p>
+          <p class="title-lg" style="font-size:18px;">オカ女〜オカルト好き女子の陰謀論雑学ch</p>
+          <p class="desc-md">陰謀論・スピリチュアル・不思議な出来事をじっくり掘り下げて記事化。</p>
+          <img src="assets/blog-okajo.jpg" alt="オカ女note">
+        </div>
+        <div class="foot-row">
+          <div class="qr-box" id="qr-note-okajo"></div>
+          <div class="link-col">
+            <a class="btn" href="https://note.com/waraka_okajo6666" target="_blank">noteを見る</a>
+            <span class="url-text">URL: https://note.com/waraka_okajo6666</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 HOME PAGE -->
+  <section class="frame" id="frame-homepage">
+    <div class="frame-head"><span class="tag mono">06</span><h2>Home Page</h2></div>
+    <p class="frame-sub mono">MID NIGHT BILLIARD — HONATSUGI</p>
+
+    <p class="title-lg">ミッドナイトビリヤード 本厚木店</p>
+    <p class="desc-md" style="font-size:16px;">ミッドナイトビリヤード本厚木店のホームページ制作をWixで作成。<br>メニューはCanvaを使用。</p>
+
+    <div class="shots-grid">
+      <img src="assets/homepage-midnight-01.jpg" onclick="openOverlay(this.src)">
+      <img src="assets/homepage-midnight-02.jpg" onclick="openOverlay(this.src)">
+      <img src="assets/homepage-midnight-03.jpg" onclick="openOverlay(this.src)">
+      <img src="assets/homepage-midnight-04.jpg" onclick="openOverlay(this.src)">
+    </div>
+    <p class="shots-caption mono">※クリックして拡大</p>
+
+    <div class="tags-row tags-row-spaced">
+      <span>Wix</span><span>Canva</span>
+    </div>
+
+    <div class="foot-row">
+      <div class="qr-box" id="qr-midnight"></div>
+      <div class="link-col">
+        <a class="btn" href="https://midnightbilliard.wixsite.com/midnight" target="_blank">Home Pageを見る</a>
+        <span class="url-text">URL: https://midnightbilliard.wixsite.com/midnight</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="overlay" onclick="this.style.display='none'"><img id="overlay-img" src=""></div>
+
+<footer>© 2026 EMIKA YAMAGUCHI</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
