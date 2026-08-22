@@ -33,6 +33,14 @@ function openOverlay(src){
   document.getElementById('overlay-img').src = src;
   document.getElementById('overlay').style.display = 'flex';
 }
+
+document.getElementById('frame-photo').addEventListener('contextmenu', event => {
+  if (event.target.matches('img')) event.preventDefault();
+});
+document.querySelectorAll('#frame-photo img').forEach(img => {
+  img.draggable = false;
+});
+
 const buttons = document.querySelectorAll('nav.tabs button');
 buttons.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -49,6 +57,7 @@ new QRCode(document.getElementById("qr-shiori"), { text:"https://shiori-official
 new QRCode(document.getElementById("qr-blog"), { text:"https://digitalhack-note.com/", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
 new QRCode(document.getElementById("qr-yt-waraka"), { text:"https://www.youtube.com/@waraka_channel", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
 new QRCode(document.getElementById("qr-yt-okajo"), { text:"https://www.youtube.com/@okajo_conspiracy", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+new QRCode(document.getElementById("qr-yt-psychology"), { text:"https://www.youtube.com/@sinrigaku_nichijou", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
 new QRCode(document.getElementById("qr-note-waraka"), { text:"https://note.com/waraka_minimal", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
 new QRCode(document.getElementById("qr-note-okajo"), { text:"https://note.com/waraka_okajo6666", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
 new QRCode(document.getElementById("qr-midnight"), { text:"https://midnightbilliard.wixsite.com/midnight", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
