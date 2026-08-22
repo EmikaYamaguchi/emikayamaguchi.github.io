@@ -144,6 +144,9 @@ main{max-width:980px; margin:0 auto; padding:64px 24px 120px;}
 .yt-item{display:flex; gap:40px; align-items:stretch; margin-bottom:56px;}
 .yt-item .yt-pic{flex:0 0 300px;}
 .yt-item .yt-pic img{width:100%; display:block; box-shadow:0 14px 30px -12px rgba(0,0,0,0.22);}
+.yt-item .channel-cover{min-height:168px; padding:24px; display:flex; flex-direction:column; justify-content:space-between; color:#fff; background:linear-gradient(135deg,#1c1a17,#51483d); box-shadow:0 14px 30px -12px rgba(0,0,0,0.22);}
+.channel-cover-label{font-size:11px; letter-spacing:0.12em; color:#f0c48a;}
+.channel-cover strong{font-family:"Shippori Mincho",serif; font-size:26px; line-height:1.45;}
 .yt-item .yt-text{flex:1; min-width:220px; display:flex; flex-direction:column; justify-content:space-between;}
 
 .note-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:8px;}
