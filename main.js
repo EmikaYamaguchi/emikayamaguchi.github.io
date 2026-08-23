@@ -1,65 +1,9 @@
-const GALLERY_IMAGES = [
-  "assets/gallery-01.jpg",
-  "assets/gallery-02.jpg",
-  "assets/gallery-03.jpg",
-  "assets/gallery-04.jpg",
-  "assets/gallery-05.jpg",
-  "assets/gallery-06.jpg",
-  "assets/gallery-07.jpg",
-  "assets/gallery-08.jpg",
-  "assets/gallery-09.jpg",
-  "assets/gallery-10.jpg",
-  "assets/gallery-11.jpg",
-  "assets/gallery-12.jpg",
-  "assets/gallery-13.jpg",
-  "assets/gallery-14.jpg",
-  "assets/gallery-15.jpg",
-  "assets/gallery-16.jpg",
-  "assets/gallery-17.jpg",
-  "assets/gallery-18.jpg",
-  "assets/gallery-19.jpg",
-  "assets/gallery-20.jpg",
-  "assets/gallery-21.jpg"
-];
-const galleryEl = document.getElementById('photo-gallery');
-GALLERY_IMAGES.forEach(src => {
-  const img = document.createElement('img');
-  img.src = src;
-  img.addEventListener('click', () => openOverlay(src));
-  galleryEl.appendChild(img);
-});
-
-function openOverlay(src){
-  document.getElementById('overlay-img').src = src;
-  document.getElementById('overlay').style.display = 'flex';
-}
-
-document.getElementById('frame-photo').addEventListener('contextmenu', event => {
-  if (event.target.matches('img')) event.preventDefault();
-});
-document.querySelectorAll('#frame-photo img').forEach(img => {
-  img.draggable = false;
-});
-
-const buttons = document.querySelectorAll('nav.tabs button');
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    buttons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.frame').forEach(f => f.classList.remove('active'));
-    document.getElementById('frame-' + btn.dataset.target).classList.add('active');
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-});
-
-const qrSize = 90;
-new QRCode(document.getElementById("qr-shiori"), { text:"https://shiori-official.digitalhack-note.com/", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-blog"), { text:"https://digitalhack-note.com/", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-yt-waraka"), { text:"https://www.youtube.com/@waraka_channel", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-yt-okajo"), { text:"https://www.youtube.com/@okajo_conspiracy", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-yt-psychology"), { text:"https://www.youtube.com/@sinrigaku_nichijou", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-note-waraka"), { text:"https://note.com/waraka_minimal", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-note-okajo"), { text:"https://note.com/waraka_okajo6666", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-midnight"), { text:"https://midnightbilliard.wixsite.com/midnight", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-line-stickers"), { text:"https://store.line.me/stickershop/author/5413770/ja", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-new QRCode(document.getElementById("qr-coconala-chat"), { text:"https://coconala.com/services/4356222", width:qrSize, height:qrSize, colorDark:"#1c1a17", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+const PHOTOS=[["assets/gallery-01.jpg","stage","舞台作品 01"],["assets/gallery-02.jpg","stage","舞台作品 02"],["assets/gallery-03.jpg","stage","舞台作品 03"],["assets/gallery-04.jpg","stage","舞台作品 04"],["assets/gallery-05.jpg","stage","舞台作品 05"],["assets/gallery-06.jpg","music","ライブ作品 01"],["assets/gallery-07.jpg","music","ライブ作品 02"],["assets/gallery-08.jpg","music","ライブ作品 03"],["assets/gallery-09.jpg","music","ライブ作品 04"],["assets/gallery-10.jpg","music","ライブ作品 05"],["assets/gallery-11.jpg","music","ライブ作品 06"],["assets/gallery-12.jpg","music","ライブ作品 07"],["assets/gallery-13.jpg","music","ライブ作品 08"],["assets/gallery-14.jpg","town","風景作品 01"],["assets/gallery-15.jpg","town","祭り作品 01"],["assets/gallery-16.jpg","town","祭り作品 02"],["assets/gallery-17.jpg","town","祭り作品 03"],["assets/gallery-18.jpg","town","祭り作品 04"],["assets/gallery-19.jpg","town","祭り作品 05"],["assets/gallery-20.jpg","animals","動物作品 01"],["assets/gallery-21.jpg","animals","動物作品 02"]];
+const gallery=document.querySelector("#photo-gallery"),tabs=[...document.querySelectorAll(".gallery-tab")],count=document.querySelector("#gallery-count"),lightbox=document.querySelector("#lightbox"),lightboxImage=document.querySelector("#lightbox-image"),lightboxCount=document.querySelector("#lightbox-count");let visiblePhotos=[...PHOTOS],currentPhoto=0;
+function showPhoto(index){currentPhoto=(index+visiblePhotos.length)%visiblePhotos.length;const [src,,alt]=visiblePhotos[currentPhoto];lightboxImage.src=src;lightboxImage.alt=alt;lightboxCount.textContent=`${String(currentPhoto+1).padStart(2,"0")} / ${String(visiblePhotos.length).padStart(2,"0")}`;lightbox.classList.add("is-open")}
+function closeLightbox(){lightbox.classList.remove("is-open")}
+function renderGallery(filter="all"){visiblePhotos=filter==="all"?[...PHOTOS]:PHOTOS.filter(photo=>photo[1]===filter);gallery.replaceChildren();visiblePhotos.forEach((photo,index)=>{const figure=document.createElement("figure"),image=document.createElement("img");figure.className="gallery-item reveal";image.src=photo[0];image.alt=photo[2];image.loading="lazy";image.draggable=false;image.addEventListener("click",()=>showPhoto(index));figure.append(image);gallery.append(figure);requestAnimationFrame(()=>figure.classList.add("is-visible"))});count.textContent=`01 — ${String(visiblePhotos.length).padStart(2,"0")}`}
+tabs.forEach(tab=>tab.addEventListener("click",()=>{tabs.forEach(item=>{item.classList.toggle("is-active",item===tab);item.setAttribute("aria-selected",String(item===tab))});renderGallery(tab.dataset.filter)}));
+document.querySelector(".lightbox-close").addEventListener("click",closeLightbox);document.querySelector(".lightbox-prev").addEventListener("click",()=>showPhoto(currentPhoto-1));document.querySelector(".lightbox-next").addEventListener("click",()=>showPhoto(currentPhoto+1));lightbox.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox()});document.addEventListener("keydown",event=>{if(event.key==="Escape")closeLightbox();if(lightbox.classList.contains("is-open")&&event.key==="ArrowLeft")showPhoto(currentPhoto-1);if(lightbox.classList.contains("is-open")&&event.key==="ArrowRight")showPhoto(currentPhoto+1)});
+document.addEventListener("contextmenu",event=>{if(event.target.closest("img"))event.preventDefault()});document.querySelectorAll("img").forEach(image=>image.addEventListener("dragstart",event=>event.preventDefault()));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));renderGallery();
