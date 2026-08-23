@@ -12,16 +12,19 @@
   <style>
     .hero h1{white-space:nowrap;font-size:clamp(34px,4vw,58px);letter-spacing:.04em}
     .hero-identity>img{width:145px;height:145px}
-    .hero-copy{padding-top:clamp(42px,5vw,72px);padding-bottom:clamp(42px,5vw,72px);justify-content:flex-start}
+    .hero-copy{padding-top:clamp(42px,5vw,72px);padding-bottom:clamp(42px,5vw,72px);justify-content:flex-start;position:relative}
     .profile-summary{padding-top:20px}
-    .instagram-box{display:flex;align-items:center;gap:18px;margin-top:auto;padding-top:1.8em;border-top:1px solid var(--line)}
+    .instagram-box{display:flex;align-items:center;gap:18px;position:absolute;left:clamp(52px,6vw,92px);right:clamp(52px,6vw,92px);bottom:clamp(42px,5vw,72px);padding-top:1.8em;border-top:1px solid var(--line)}
     .instagram-box img{width:108px;height:108px;object-fit:cover}
     .instagram-box a{font:600 11px/1 "Libre Franklin",sans-serif;letter-spacing:.08em;border-bottom:1px solid var(--ink);padding-bottom:8px}
     .instagram-box a span{margin-left:12px;color:var(--accent)}
     .center-menu{display:flex;justify-content:center;align-items:center;gap:46px;min-height:78px;background:#d7d5cd;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .center-menu a{font:600 11px/1 "Libre Franklin",sans-serif;letter-spacing:.1em;text-transform:uppercase}
     .center-menu a:hover{color:var(--accent)}
-    @media(max-width:760px){.hero h1{font-size:32px}.hero-identity>img{width:118px;height:118px}.center-menu{min-height:64px;gap:18px;overflow-x:auto;justify-content:flex-start;padding:0 20px}.center-menu a{white-space:nowrap;font-size:9px}.instagram-box img{width:88px;height:88px}}
+    .youtube-section{padding:95px 24px;background:var(--paper)}
+    .youtube-list{max-width:1200px;margin:42px auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .youtube-list .work-card{min-height:410px}
+    @media(max-width:760px){.hero h1{font-size:32px}.hero-identity>img{width:118px;height:118px}.center-menu{min-height:64px;gap:18px;overflow-x:auto;justify-content:flex-start;padding:0 20px}.center-menu a{white-space:nowrap;font-size:9px}.instagram-box{position:static;margin-top:1.8em;padding-top:1.8em}.instagram-box img{width:88px;height:88px}.youtube-section{padding:75px 5vw}.youtube-list{grid-template-columns:1fr;gap:12px;margin-top:35px}.youtube-list .work-card{min-height:300px}}
   </style>
 </head>
 <body>
@@ -38,7 +41,7 @@
         <div class="instagram-box"><img src="assets/instagram-waraka-emika-qr-optimized.png" alt="Instagram @waraka_emika のQRコード"><a href="https://www.instagram.com/waraka_emika?igsi=ZDg1enA5dHk5OHh4" target="_blank" rel="noopener noreferrer">Instagramを見る <span>↗</span></a></div>
       </div>
     </section>
-    <nav class="center-menu" id="site-nav" aria-label="メインメニュー"><a href="#gallery">Gallery</a><a href="#other-works">他の活動</a></nav>
+    <nav class="center-menu" id="site-nav" aria-label="メインメニュー"><a href="#gallery">Gallery</a><a href="#youtube">YOUTUBE</a><a href="#other-works">他の活動</a></nav>
     <section class="gallery-section" id="gallery">
       <div class="section-heading reveal"><p class="eyebrow">SELECTED WORKS</p><h2>Gallery</h2><p class="gallery-count" id="gallery-count">01 — 21</p></div>
       <div class="gallery-tabs reveal" role="tablist" aria-label="ギャラリーのジャンル">
@@ -50,6 +53,13 @@
       </div>
       <div class="gallery-grid" id="photo-gallery" aria-live="polite"></div>
       <p class="gallery-note">写真を選択すると大きく表示されます。</p>
+    </section>
+    <section class="youtube-section" id="youtube">
+      <div class="section-heading reveal"><p class="eyebrow">YOUTUBE</p><h2>YouTube</h2></div>
+      <div class="youtube-list">
+        <article class="work-card reveal"><img src="assets/youtube-waraka.jpg" alt="わらかちゃんねる"><div><p>01 / YOUTUBE</p><h3>わらかちゃんねる</h3><span>ガジェット好き目線でのレビュー・開封・ミニマル生活を発信。登録者数547人・143本。</span><a href="https://www.youtube.com/@waraka_channel" target="_blank" rel="noopener noreferrer">YOUTUBEを見る ↗</a></div></article>
+        <article class="work-card reveal"><img src="assets/youtube-okajo.jpg" alt="オカ女ちゃんねる"><div><p>02 / YOUTUBE</p><h3>オカ女〜オカルト好き女子の<br>陰謀論雑学ch</h3><span>オカルト・陰謀論・仮想現実など独自視点で掘り下げる。登録者数1,160人・495本。</span><a href="https://www.youtube.com/@okajo_conspiracy" target="_blank" rel="noopener noreferrer">YOUTUBEを見る ↗</a></div></article>
+      </div>
     </section>
     <section class="other-works" id="other-works">
       <div class="section-heading reveal"><p class="eyebrow">OTHER ACTIVITIES</p><h2>他の活動</h2></div>
