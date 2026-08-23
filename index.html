@@ -23,10 +23,16 @@
     .center-menu a:hover{color:var(--accent)}
     .youtube-section{padding:95px 24px;background:var(--paper)}
     .youtube-section .section-heading{display:block}
+    .gallery-section .section-heading{display:block}
     .youtube-list{max-width:1200px;margin:42px auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-    .youtube-list .work-card{min-height:410px}
-    .work-card>img{object-fit:contain;background:#fff}
-    @media(max-width:760px){.hero h1{font-size:32px}.hero-identity>img{width:118px;height:118px}.center-menu{min-height:64px;gap:18px;overflow-x:auto;justify-content:flex-start;padding:0 20px}.center-menu a{white-space:nowrap;font-size:9px}.instagram-box{position:static;margin-top:1.8em;padding-top:1.8em}.instagram-box img{width:88px;height:88px}.youtube-section{padding:75px 5vw}.youtube-list{grid-template-columns:1fr;gap:12px;margin-top:35px}.youtube-list .work-card{min-height:300px}}
+    .youtube-list .work-card{min-height:0}
+    .work-card{min-height:0}
+    .work-card>img{height:260px;object-fit:contain;background:#fff}
+    .work-card>div{padding:17px 24px 18px}
+    .work-card h3{font-size:24px;margin:10px 0 8px}
+    .work-card span{font-size:11px;line-height:1.55}
+    .work-card a{margin-top:16px}
+    @media(max-width:760px){.hero h1{font-size:32px}.hero-identity>img{width:118px;height:118px}.center-menu{min-height:64px;gap:18px;overflow-x:auto;justify-content:flex-start;padding:0 20px}.center-menu a{white-space:nowrap;font-size:9px}.instagram-box{position:static;margin-top:1.8em;padding-top:1.8em}.instagram-box img{width:88px;height:88px}.youtube-section{padding:75px 5vw}.youtube-list{grid-template-columns:1fr;gap:12px;margin-top:35px}.youtube-list .work-card{min-height:0}.work-card>img{height:230px}}
   </style>
 </head>
 <body>
