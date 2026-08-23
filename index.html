@@ -32,6 +32,8 @@
     .work-card h3{font-size:24px;margin:10px 0 8px}
     .work-card span{font-size:11px;line-height:1.55}
     .work-card a{margin-top:16px}
+    .work-list .work-card>div{min-height:180px}
+    .work-list .work-card a{margin-top:auto}
     @media(max-width:760px){.hero h1{font-size:32px}.hero-identity>img{width:118px;height:118px}.center-menu{min-height:64px;gap:18px;overflow-x:auto;justify-content:flex-start;padding:0 20px}.center-menu a{white-space:nowrap;font-size:9px}.instagram-box{position:static;margin-top:1.8em;padding-top:1.8em}.instagram-box img{width:88px;height:88px}.youtube-section{padding:75px 5vw}.youtube-list{grid-template-columns:1fr;gap:12px;margin-top:35px}.youtube-list .work-card{min-height:0}.work-card>img{height:230px}}
   </style>
 </head>
@@ -51,7 +53,7 @@
     </section>
     <nav class="center-menu" id="site-nav" aria-label="メインメニュー"><a href="#gallery">Gallery</a><a href="#youtube">YOUTUBE</a><a href="#other-works">他の活動</a></nav>
     <section class="gallery-section" id="gallery">
-      <div class="section-heading reveal"><p class="eyebrow">SELECTED WORKS</p><h2>Gallery</h2><p class="gallery-count" id="gallery-count">01 — 21</p></div>
+      <div class="section-heading reveal"><h2>Gallery</h2><p class="gallery-count" id="gallery-count" hidden>01 — 21</p></div>
       <div class="gallery-tabs reveal" role="tablist" aria-label="ギャラリーのジャンル">
         <button class="gallery-tab is-active" type="button" role="tab" aria-selected="true" data-filter="all">All <span>21</span></button>
         <button class="gallery-tab" type="button" role="tab" aria-selected="false" data-filter="stage">Stage <span>05</span></button>
@@ -63,7 +65,7 @@
       <p class="gallery-note">写真を選択すると大きく表示されます。</p>
     </section>
     <section class="youtube-section" id="youtube">
-      <div class="section-heading reveal"><p class="eyebrow">YOUTUBE</p><h2>YouTube</h2></div>
+      <div class="section-heading reveal"><h2>YouTube</h2></div>
       <div class="youtube-list">
         <article class="work-card reveal"><img src="assets/youtube-waraka.jpg" alt="わらかちゃんねる"><div><p>01 / YOUTUBE</p><h3>わらかちゃんねる</h3><span>ガジェット好き目線でのレビュー・開封・ミニマル生活を発信。登録者数547人・143本。</span><a href="https://www.youtube.com/@waraka_channel" target="_blank" rel="noopener noreferrer">YOUTUBEを見る ↗</a></div></article>
         <article class="work-card reveal"><img src="assets/youtube-okajo.jpg" alt="オカ女ちゃんねる"><div><p>02 / YOUTUBE</p><h3>オカ女〜オカルト好き女子の<br>陰謀論雑学ch</h3><span>オカルト・陰謀論・仮想現実など独自視点で掘り下げる。登録者数1,160人・495本。</span><a href="https://www.youtube.com/@okajo_conspiracy" target="_blank" rel="noopener noreferrer">YOUTUBEを見る ↗</a></div></article>
