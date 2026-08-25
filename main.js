@@ -4,9 +4,27 @@ function showPhoto(index){currentPhoto=(index+visiblePhotos.length)%visiblePhoto
 function closeLightbox(){lightbox.classList.remove("is-open")}
 function renderGallery(filter="all"){visiblePhotos=filter==="all"?[...PHOTOS]:PHOTOS.filter(photo=>photo[1]===filter);gallery.replaceChildren();visiblePhotos.forEach((photo,index)=>{const figure=document.createElement("figure"),image=document.createElement("img");figure.className="gallery-item reveal";image.src=photo[0];image.alt=photo[2];image.loading="lazy";image.draggable=false;image.addEventListener("click",()=>showPhoto(index));figure.append(image);gallery.append(figure);requestAnimationFrame(()=>figure.classList.add("is-visible"))});count.textContent=`01 — ${String(visiblePhotos.length).padStart(2,"0")}`}
 tabs.forEach(tab=>tab.addEventListener("click",()=>{tabs.forEach(item=>{item.classList.toggle("is-active",item===tab);item.setAttribute("aria-selected",String(item===tab))});renderGallery(tab.dataset.filter)}));
-document.querySelector(".lightbox-close").addEventListener("click",closeLightbox);document.querySelector(".lightbox-prev").addEventListener("click",()=>showPhoto(currentPhoto-1));document.querySelector(".lightbox-next").addEventListener("click",()=>showPhoto(currentPhoto+1));lightbox.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox()});document.addEventListener("keydown",event=>{if(event.key==="Escape")closeLightbox();if(lightbox.classList.contains("is-open")&&event.key==="ArrowLeft")showPhoto(currentPhoto-1);if(lightbox.classList.contains("is-open")&&event.key==="ArrowRight")showPhoto(currentPhoto+1)});
+document.querySelector(".lightbox-close")?.addEventListener("click",closeLightbox);document.querySelector(".lightbox-prev")?.addEventListener("click",()=>showPhoto(currentPhoto-1));document.querySelector(".lightbox-next")?.addEventListener("click",()=>showPhoto(currentPhoto+1));lightbox?.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox()});document.addEventListener("keydown",event=>{if(event.key==="Escape")closeLightbox();if(lightbox?.classList.contains("is-open")&&event.key==="ArrowLeft")showPhoto(currentPhoto-1);if(lightbox?.classList.contains("is-open")&&event.key==="ArrowRight")showPhoto(currentPhoto+1)});
 document.addEventListener("contextmenu",event=>{if(event.target.closest("img"))event.preventDefault()});document.querySelectorAll("img").forEach(image=>image.addEventListener("dragstart",event=>event.preventDefault()));
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));renderGallery();
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));if(gallery)renderGallery();
+
+// Compact services inside the profile panel.
+const profileContact=document.querySelector('.profile-contact');
+if(profileContact&&!document.querySelector('.profile-services')){
+  const services=document.createElement('section');
+  services.className='profile-services';
+  services.innerHTML=`<div class="profile-services-head"><span>WHAT I CAN DO</span><h2>できること</h2></div><div class="profile-services-grid">
+    <article><b>WEBサイト制作</b><p>GitHub Pages・Wixなどを使ったWebサイトの制作・更新。</p></article>
+    <article><b>AIコンテンツ制作</b><p>ChatGPT・Claudeなどを活用した企画、文章、画像などの制作。</p></article>
+    <article><b>動画企画・台本</b><p>YouTube・ショート動画の企画や台本、発信用コンテンツの制作。</p></article>
+    <article><b>Canvaデザイン</b><p>メニュー、告知画像、SNS用画像などのデザイン制作。</p></article>
+    <article><b>LINEスタンプ制作</b><p>AIを活用したスタンプ・絵文字の企画、画像制作。</p></article>
+    <article><b>写真撮影</b><p>舞台、ライブ、イベント、祭りなどの撮影。</p></article>
+    <article><b>パソコン基本操作・サポート</b><p>Windowsの基本操作や各種設定など、初心者向けの使い方をサポート。</p></article>
+    <article><b>スマホ・ガジェット</b><p>スマホの基本操作・設定や、用途に合わせたガジェット選びをサポート。</p></article>
+  </div>`;
+  profileContact.before(services);
+}
 
 // GALLERY in the top navigation is an anchor within the same page.
 document.addEventListener("click",event=>{const link=event.target.closest('a[data-panel-link="gallery"]');if(!link)return;event.preventDefault();event.stopImmediatePropagation();document.querySelector("#gallery")?.scrollIntoView({behavior:"smooth",block:"start"});history.replaceState(null,"","#gallery");},true);
