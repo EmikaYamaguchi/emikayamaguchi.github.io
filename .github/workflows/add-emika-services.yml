@@ -1,4 +1,4 @@
-name: Add Emika services section
+name: Apply Emika services section
 on:
   push:
     paths:
@@ -10,77 +10,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Insert services block and styles
+      - name: Insert framed services section
+        shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
-
-          index = Path('index.html')
-          html = index.read_text(encoding='utf-8')
+          import base64, re
+          html_path = Path("index.html")
+          html = html_path.read_text(encoding="utf-8")
           marker = '    <section class="panel gallery-panel" id="gallery" data-panel="gallery">'
-          block = '''    <section class="emika-services" aria-labelledby="emika-services-title">
-      <div class="emika-services-inner">
-        <div class="emika-services-head">
-          <p class="section-kicker">WHAT I CAN DO</p>
-          <h2 id="emika-services-title">できること</h2>
-        </div>
-        <div class="emika-services-grid">
-          <article><b>WEBサイト制作</b><p>GitHub Pages・Wixなどを使ったWebサイトの制作・更新。</p></article>
-          <article><b>AIコンテンツ制作</b><p>ChatGPT・Claudeなどを活用した企画、文章、画像などの制作。</p></article>
-          <article><b>動画企画・台本</b><p>YouTube・ショート動画の企画や台本、発信用コンテンツの制作。</p></article>
-          <article><b>Canvaデザイン</b><p>メニュー、告知画像、SNS用画像などのデザイン制作。</p></article>
-          <article><b>LINEスタンプ制作</b><p>AIを活用したスタンプ・絵文字の企画、画像制作。</p></article>
-          <article><b>写真撮影</b><p>舞台、ライブ、イベント、祭りなどの撮影。</p></article>
-          <article><b>パソコン基本操作・サポート</b><p>Windowsの基本操作や各種設定など、初心者向けの使い方をサポート。</p></article>
-          <article><b>スマホ・ガジェット</b><p>スマホの基本操作・設定や、用途に合わせたガジェット選びをサポート。</p></article>
-        </div>
-      </div>
-    </section>
-
-'''
+          block = base64.b64decode("ICAgIDxzZWN0aW9uIGNsYXNzPSJlbWlrYS1zZXJ2aWNlcyIgYXJpYS1sYWJlbGxlZGJ5PSJlbWlrYS1zZXJ2aWNlcy10aXRsZSI+CiAgICAgIDxkaXYgY2xhc3M9ImVtaWthLXNlcnZpY2VzLWlubmVyIj4KICAgICAgICA8ZGl2IGNsYXNzPSJlbWlrYS1zZXJ2aWNlcy1oZWFkIj4KICAgICAgICAgIDxwIGNsYXNzPSJzZWN0aW9uLWtpY2tlciI+V0hBVCBJIENBTiBETzwvcD4KICAgICAgICAgIDxoMiBpZD0iZW1pa2Etc2VydmljZXMtdGl0bGUiPuOBp+OBjeOCi+OBk+OBqDwvaDI+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0iZW1pa2Etc2VydmljZXMtZ3JpZCI+CiAgICAgICAgICA8YXJ0aWNsZT48Yj5XRULjgrXjgqTjg4jliLbkvZw8L2I+PHA+R2l0SHViIFBhZ2Vz44O7V2l444Gq44Gp44KS5L2/44Gj44GfV2Vi44K144Kk44OI44Gu5Yi25L2c44O75pu05paw44CCPC9wPjwvYXJ0aWNsZT4KICAgICAgICAgIDxhcnRpY2xlPjxiPkFJ44Kz44Oz44OG44Oz44OE5Yi25L2cPC9iPjxwPkNoYXRHUFQ44O7Q2xhdWRl44Gq44Gp44KS5rS755So44GX44Gf5LyB55S744CB5paH56ug44CB55S75YOP44Gq44Gp44Gu5Yi25L2c44CCPC9wPjwvYXJ0aWNsZT4KICAgICAgICAgIDxhcnRpY2xlPjxiPuWLleeUu+S8geeUu+ODu+WPsOacrDwvYj48cD5Zb3VUdWJl44O744K344On44O844OI5YuV55S744Gu5LyB55S744KE5Y+w5pys44CB55m65L+h55So44Kz44Oz44OG44Oz44OE44Gu5Yi25L2c44CCPC9wPjwvYXJ0aWNsZT4KICAgICAgICAgIDxhcnRpY2xlPjxiPkNhbnZh44OH44K244Kk44OzPC9iPjxwPuODoeODi+ODpeODvOOAgeWRiuS7mOeUu+WDj+OAgeSOU+OBruaJjeWFiOS/oeeUu+WDj+OBquOBqeOBruODh+OCtuOCpOODs+WItuS9nOOAgg==").decode("utf-8")
+          block += base64.b64decode("PC9wPjwvYXJ0aWNsZT4KICAgICAgICAgIDxhcnRpY2xlPjxiPkxJTkXjgrnjgr/jg7Pjg5fliLbkvZw8L2I+PHA+QUnjgpLmtLvnlKjjgZfjgZ/jgrnjgr/jg7Pjg5fjg7vjgrXjg4fjgqPjga7kvIHnlLvjgIHnlLvlg4/liLbkvZzjgII8L3A+PC9hcnRpY2xlPgogICAgICAgICAgPGFydGljbGU+PGI+5YaZ55yf5pKu5b2xPC9iPjxwPuOiueWPsOOAgeODqeOCpOODluOAgeOCpOODmeODs+ODiOOAgeelreOCiuOBquOBqeOBruaSruW9seOAgjwvcD48L2FydGljbGU+CiAgICAgICAgICA8YXJ0aWNsZT48Yj7jg5Hjgr3jgrPjg7Pln7rmnKzmk43kvZzjg7vjgrXjg53jg7zjg488L2I+PHA+V2luZG93c+OBruWfuuacrOaTjeS9nOOChOWQhOeoruWumOOBquOBqeOAgeWIneW/g+iAheWQkeOBkeOBruS9v+OBhOaWueOCkuOCteODneODvOODiOOAggjwvcD48L2FydGljbGU+CiAgICAgICAgICA8YXJ0aWNsZT48Yj7jgrnjg57jg5vjg7vjgqzjgrjjgqfjg4Pjg488L2I+PHA+44K544Oe44Ob44Gu5Z+65pys5pON5L2c44O76Kit5a6a44KE44CB55So6YCU44Gr5ZCI44KP44Gb44Gf44Ks44K444Kn44OD44OI6YG444Gz44KS44K144Od44O844OI44CCPC9wPjwvYXJ0aWNsZT4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L3NlY3Rpb24+Cgo=").decode("utf-8")
           if 'class="emika-services"' not in html:
               if marker not in html:
-                  raise SystemExit('Gallery marker not found')
+                  raise SystemExit("Gallery marker not found")
               html = html.replace(marker, block + marker, 1)
-          html = html.replace('style.css?v=contact-sheet-7', 'style.css?v=contact-sheet-9')
-          index.write_text(html, encoding='utf-8')
-
-          css_path = Path('style.css')
-          css = css_path.read_text(encoding='utf-8')
-          start = css.find('/* Hide the old injected profile services if present */')
-          if start != -1:
-              media = css.find('@media(max-width:850px)', start)
-              if media != -1:
-                  css = css[:start] + css[media:]
-          new_css = r'''
-
-/* EMiKA services block: framed cards above Gallery */
-.profile-services{display:none!important}
-.emika-services{order:2;background:#0c0d0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:48px 4vw 52px}
-.emika-services-inner{border:1px solid var(--line);background:#0a0b0b}
-.emika-services-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:24px 28px;border-bottom:1px solid var(--line)}
-.emika-services-head h2{margin:0;font:500 clamp(30px,4vw,48px)/1.1 "Zen Old Mincho",serif;letter-spacing:.05em}
-.emika-services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.emika-services-grid article{min-height:126px;padding:20px 20px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#101111}
-.emika-services-grid article:nth-child(4n){border-right:0}
-.emika-services-grid article:nth-last-child(-n+4){border-bottom:0}
-.emika-services-grid b{display:block;margin-bottom:10px;color:var(--paper);font:500 12px/1.5 "DM Mono",monospace;letter-spacing:.03em}
-.emika-services-grid p{margin:0;color:var(--muted);font:13px/1.8 "Zen Old Mincho",serif}
-.emika-services-grid article:hover{background:#121510}
-.emika-services-grid article:hover b{color:var(--lime)}
-body:has(.profile-panel.is-active) .emika-services,body:has(.gallery-panel.is-active) .emika-services{display:block!important}
-body:has(.profile-panel.is-active) .emika-services,body:has(.gallery-panel.is-active) .emika-services{order:2!important}
-body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-active) .gallery-panel{order:3!important}
-@media(max-width:900px){.emika-services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.emika-services-grid article:nth-child(4n){border-right:1px solid var(--line)}.emika-services-grid article:nth-child(2n){border-right:0}.emika-services-grid article:nth-last-child(-n+4){border-bottom:1px solid var(--line)}.emika-services-grid article:nth-last-child(-n+2){border-bottom:0}}
-@media(max-width:850px){.emika-services{padding:30px 5vw 34px}.emika-services-head{padding:20px}.emika-services-head h2{font-size:34px}.emika-services-grid{grid-template-columns:1fr}.emika-services-grid article{min-height:0;padding:18px;border-right:0!important;border-bottom:1px solid var(--line)!important}.emika-services-grid article:last-child{border-bottom:0!important}.emika-services-grid b{font-size:11px}.emika-services-grid p{font-size:12px}}
-'''
-          css += new_css
-          css_path.write_text(css, encoding='utf-8')
+          html = re.sub(r'style\.css\?v=[^"]+', 'style.css?v=services-20260826-1', html, count=1)
+          html_path.write_text(html, encoding="utf-8")
+          css_path = Path("style.css")
+          current = css_path.read_text(encoding="utf-8")
+          extra = base64.b64decode("Ci8qIEVtaWthOiBhY3R1YWwgZnJhbWVkIHNraWxscyBzZWN0aW9uIGJldHdlZW4gUHJvZmlsZSBhbmQgR2FsbGVyeSAqLwouZ2FsbGVyeS1wYW5lbD4uaW5kZXgtcmFpbHtkaXNwbGF5Om5vbmUhaW1wb3J0YW50fQouZW1pa2Etc2VydmljZXN7ZGlzcGxheTpub25lO2JhY2tncm91bmQ6IzBjMGQwZDtwYWRkaW5nOjQ0cHggNHZ3IDQ4cHg7Ym9yZGVyLXRvcDoxcHggc29saWQgdmFyKC0tbGluZSk7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgdmFyKC0tbGluZSl9Ci5lbWlrYS1zZXJ2aWNlcy1pbm5lcntib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2JhY2tncm91bmQ6IzBhMGIwYjtwYWRkaW5nOjI4cHh9Ci5lbWlrYS1zZXJ2aWNlcy1oZWFke2Rpc3BsYXk6ZmxleDthbGlnbi1pdGVtczpmbGV4LWVuZDtqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYmV0d2VlbjtnYXA6MjRweDttYXJnaW4tYm90dG9tOjIwcHh9Ci5lbWlrYS1zZXJ2aWNlcy1oZWFkIGgye21hcmdpbjowO2ZvbnQ6NTAwIGNsYW1wKDMycHgsNHZ3LDUycHgpLzEuMDUgIlplbiBPbGQgTWluY2hvIixzZXJpZjtsZXR0ZXItc3BhY2luZzouMDRlbX0KLmVtaWthLXNlcnZpY2VzLWdyaWR7ZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoNCxtaW5tYXgoMCwxZnIpKTtnYXA6MTBweH0KLmVtaWthLXNlcnZpY2VzLWdyaWQgYXJ0aWNsZXtib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2JhY2tncm91bmQ6dmFyKC0tcGFuZWwpO3BhZGRpbmc6MThweCAxOHB4IDE2cHg7bWluLWhlaWdodDoxMjJweH0KLmVtaWthLXNlcnZpY2VzLWdyaWQgYXJ0aWNsZTpob3Zlcntib3JkZXItY29sb3I6dmFyKC0tbGltZSk7YmFja2dyb3VuZDojMTIxNTEwfQouZW1pa2Etc2VydmljZXMtZ3JpZCBie2Rpc3BsYXk6YmxvY2s7bWFyZ2luLWJvdHRvbToxMHB4O2NvbG9yOnZhcigtLXBhcGVyKTtmb250OjUwMCAxMnB4LzEuNSAiRE0gTW9ubyIsbW9ub3NwYWNlfQouZW1pa2Etc2VydmljZXMtZ3JpZCBwe21hcmdpbjowO2NvbG9yOnZhcigtLW11dGVkKTtmb250OjEzcHgvMS43NSAiWmVuIE9sZCBNaW5jaG8iLHNlcmlmfQpib2R5OmhhcygucHJvZmlsZS1wYW5lbC5pcy1hY3RpdmUpIC5lbWlrYS1zZXJ2aWNlcyxib2R5OmhhcyguZ2FsbGVyeS1wYW5lbC5pcy1hY3RpdmUpIC5lbWlrYS1zZXJ2aWNlc3tkaXNwbGF5OmJsb2NrIWltcG9ydGFudDtvcmRlcjoyIWltcG9ydGFudH0KYm9keTpoYXMoLnByb2ZpbGUtcGFuZWwuaXMtYWN0aXZlKSAuZ2FsbGVyeS1wYW5lbCxib2R5OmhhcyguZ2FsbGVyeS1wYW5lbC5pcy1hY3RpdmUpIC5nYWxsZXJ5LXBhbmVse29yZGVyOjMhaW1wb3J0YW50fQpAbWVkaWEobWF4LXdpZHRoOjkwMHB4KXsuZW1pa2Etc2VydmljZXMtZ3JpZHtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDIsbWlubWF4KDAsMWZyKSl9fQpAbWVkaWEobWF4LXdpZHRoOjg1MHB4KXsuZW1pa2Etc2VydmljZXN7cGFkZGluZzozMHB4IDV2dyAzNHB4fS5lbWlrYS1zZXJ2aWNlcy1pbm5lcntwYWRkaW5nOjIwcHh9LmVtaWthLXNlcnZpY2VzLWhlYWR7ZGlzcGxheTpibG9ja30uZW1pa2Etc2VydmljZXMtaGVhZCBoMnttYXJnaW4tdG9wOjhweDtmb250LXNpemU6MzRweH0uZW1pa2Etc2VydmljZXMtZ3JpZHtncmlkLXRlbXBsYXRlLWNvbHVtbnM6MWZyfS5lbWlrYS1zZXJ2aWNlcy1ncmlkIGFydGljbGV7bWluLWhlaWdodDowfX0K").decode("utf-8")
+          if "/* Emika: actual framed skills section between Profile and Gallery */" not in current:
+              current += extra
+          css_path.write_text(current, encoding="utf-8")
           PY
-      - name: Commit changes
+      - name: Commit site changes
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html style.css
-          git diff --cached --quiet || git commit -m "Add framed services section above Gallery"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "Add framed skills section above Gallery"
+            git push
+          fi
