@@ -8,22 +8,48 @@ document.querySelector(".lightbox-close")?.addEventListener("click",closeLightbo
 document.addEventListener("contextmenu",event=>{if(event.target.closest("img"))event.preventDefault()});document.querySelectorAll("img").forEach(image=>image.addEventListener("dragstart",event=>event.preventDefault()));
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));if(gallery)renderGallery();
 
-// Compact services inside the profile panel.
-const profileContact=document.querySelector('.profile-contact');
-if(profileContact&&!document.querySelector('.profile-services')){
+// Full-width services block between PROFILE and GALLERY.
+document.querySelector('.profile-services')?.remove();
+const galleryPanel=document.querySelector('#gallery');
+if(galleryPanel&&!document.querySelector('.profile-services-wide')){
   const services=document.createElement('section');
-  services.className='profile-services';
-  services.innerHTML=`<div class="profile-services-head"><span>WHAT I CAN DO</span><h2>できること</h2></div><div class="profile-services-grid">
-    <article><b>WEBサイト制作</b><p>GitHub Pages・Wixなどを使ったWebサイトの制作・更新。</p></article>
-    <article><b>AIコンテンツ制作</b><p>ChatGPT・Claudeなどを活用した企画、文章、画像などの制作。</p></article>
-    <article><b>動画企画・台本</b><p>YouTube・ショート動画の企画や台本、発信用コンテンツの制作。</p></article>
-    <article><b>Canvaデザイン</b><p>メニュー、告知画像、SNS用画像などのデザイン制作。</p></article>
-    <article><b>LINEスタンプ制作</b><p>AIを活用したスタンプ・絵文字の企画、画像制作。</p></article>
-    <article><b>写真撮影</b><p>舞台、ライブ、イベント、祭りなどの撮影。</p></article>
-    <article><b>パソコン基本操作・サポート</b><p>Windowsの基本操作や各種設定など、初心者向けの使い方をサポート。</p></article>
-    <article><b>スマホ・ガジェット</b><p>スマホの基本操作・設定や、用途に合わせたガジェット選びをサポート。</p></article>
-  </div>`;
-  profileContact.before(services);
+  services.className='profile-services-wide';
+  services.innerHTML=`
+    <div class="profile-services-wide-head">
+      <div><span>WHAT I CAN DO</span><h2>できること</h2></div>
+      <p>写真だけでなく、WebやAI、PC・スマホまわりまで。<br>できることをまとめています。</p>
+    </div>
+    <div class="profile-services-wide-grid">
+      <article><b>WEBサイト制作</b><p>GitHub Pages・Wixなどを使ったWebサイトの制作・更新。</p></article>
+      <article><b>AIコンテンツ制作</b><p>ChatGPT・Claudeなどを活用した企画、文章、画像などの制作。</p></article>
+      <article><b>動画企画・台本</b><p>YouTube・ショート動画の企画や台本、発信用コンテンツの制作。</p></article>
+      <article><b>Canvaデザイン</b><p>メニュー、告知画像、SNS用画像などのデザイン制作。</p></article>
+      <article><b>LINEスタンプ制作</b><p>AIを活用したスタンプ・絵文字の企画、画像制作。</p></article>
+      <article><b>写真撮影</b><p>舞台、ライブ、イベント、祭りなどの撮影。</p></article>
+      <article><b>パソコン基本操作・サポート</b><p>Windowsの基本操作や各種設定など、初心者向けの使い方をサポート。</p></article>
+      <article><b>スマホ・ガジェット</b><p>スマホの基本操作・設定や、用途に合わせたガジェット選びをサポート。</p></article>
+    </div>`;
+  galleryPanel.before(services);
+
+  const style=document.createElement('style');
+  style.textContent=`
+    .profile-services-wide{display:none;order:2;background:#0c0d0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:54px 5vw 58px}
+    body:has(.profile-panel.is-active) .profile-services-wide,body:has(.gallery-panel.is-active) .profile-services-wide{display:block}
+    body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-active) .gallery-panel{order:3!important}
+    .profile-services-wide-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:28px}
+    .profile-services-wide-head span{display:block;color:var(--lime);font-size:10px;letter-spacing:.14em;margin-bottom:10px}
+    .profile-services-wide-head h2{margin:0;font:500 clamp(36px,4vw,58px)/1.05 "Zen Old Mincho",serif;letter-spacing:.03em}
+    .profile-services-wide-head p{margin:0;color:var(--muted);font:14px/1.8 "Zen Old Mincho",serif;text-align:right}
+    .profile-services-wide-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .profile-services-wide-grid article{min-height:145px;padding:22px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#101111}
+    .profile-services-wide-grid b{display:block;color:var(--paper);font:500 13px/1.5 "DM Mono",monospace;margin-bottom:10px}
+    .profile-services-wide-grid p{margin:0;color:var(--muted);font:14px/1.75 "Zen Old Mincho",serif}
+    .profile-services-wide-grid article:nth-child(4n+1),.profile-services-wide-grid article:nth-child(4n+4){background:#11150e}
+    .profile-services-wide-grid article:hover{outline:1px solid var(--lime);outline-offset:-1px}
+    @media(max-width:1000px){.profile-services-wide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:850px){.profile-services-wide{padding:42px 7vw 46px}.profile-services-wide-head{display:block}.profile-services-wide-head p{margin-top:16px;text-align:left}.profile-services-wide-head p br{display:none}.profile-services-wide-grid{grid-template-columns:1fr}.profile-services-wide-grid article{min-height:0;padding:18px}.profile-services-wide-grid b{font-size:12px}.profile-services-wide-grid p{font-size:13px}}
+  `;
+  document.head.appendChild(style);
 }
 
 // GALLERY in the top navigation is an anchor within the same page.
