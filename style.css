@@ -28,8 +28,9 @@
 .emika-services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .emika-services-grid article{border:1px solid var(--line);background:var(--panel);padding:18px 18px 16px;min-height:122px}
 .emika-services-grid article:hover{border-color:var(--lime);background:#121510}
-.emika-services-grid b{display:block;margin-bottom:10px;color:var(--paper);font:500 12px/1.5 "DM Mono",monospace}
-.emika-services-grid p{margin:0;color:var(--muted);font:13px/1.75 "Zen Old Mincho",serif}
+.emika-services-grid b{display:block;margin-bottom:10px;color:#fff;font:500 12px/1.5 "DM Mono",monospace}
+.emika-services-grid p{margin:0;color:#fff;font:13px/1.75 "Zen Old Mincho",serif}
+.emika-services-grid article:nth-child(6){order:-1}
 body:has(.profile-panel.is-active) .emika-services,body:has(.gallery-panel.is-active) .emika-services{display:block!important;order:2!important}
 body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-active) .gallery-panel{order:3!important}
 @media(max-width:900px){.emika-services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
