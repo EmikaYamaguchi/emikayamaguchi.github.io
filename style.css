@@ -48,3 +48,7 @@ body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-act
   .activity-card>img{order:2;height:220px;padding:10px;border-top:1px solid var(--line)}
   .activity-card>div>footer{order:3;margin:0;padding:22px}
 }
+
+/* Waraka production portfolio QR above the profile inquiry text */
+.business-contact::before{content:"制作メインのポートフォリオ\A waraka2026.github.io\A Web制作・AIコンテンツ・LINEスタンプなどはこちら";display:block;min-height:86px;margin:0 0 16px;padding:14px 14px 14px 108px;border:1px solid var(--line);background:rgba(217,244,81,.055) url("assets/waraka-portfolio-qr.svg") 14px center/76px 76px no-repeat;color:var(--paper);white-space:pre-line;font:13px/1.65 "Zen Old Mincho",serif;box-shadow:8px 8px 0 rgba(0,0,0,.22)}
+@media(max-width:850px){.profile-contact{margin-top:190px}.business-contact::before{min-height:74px;margin-bottom:14px;padding:12px 12px 12px 90px;background-size:64px 64px;background-position:12px center;font-size:12px}}
