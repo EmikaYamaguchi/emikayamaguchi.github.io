@@ -38,3 +38,4 @@ body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-act
 
 .profile-title-row{display:flex;align-items:center;gap:clamp(18px,2vw,30px);margin-top:28px}.profile-title-row h1{margin:0;font-size:clamp(44px,3.6vw,58px)}.profile-avatar{width:clamp(84px,7.5vw,112px);height:clamp(84px,7.5vw,112px);flex:0 0 auto;border-radius:50%;object-fit:cover;object-position:center 38%;border:3px solid var(--paper);box-shadow:0 0 0 2px var(--lime),10px 10px 0 rgba(0,0,0,.38)}
 @media(max-width:850px){.profile-title-row{gap:14px;margin-top:28px}.profile-title-row h1{margin:0;font-size:42px}.profile-avatar{width:84px;height:84px}}
+@media(max-width:600px){.activity-card>div{order:1;border-top:0;border-bottom:1px solid var(--line)}.activity-card>img{order:2}}
