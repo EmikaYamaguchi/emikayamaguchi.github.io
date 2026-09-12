@@ -31,3 +31,34 @@ if(galleryPanel&&galleryHead&&!galleryPanel.querySelector('.gallery-services')){
 }
 
 document.addEventListener("click",event=>{const link=event.target.closest('a[data-panel-link="gallery"]');if(!link)return;event.preventDefault();event.stopImmediatePropagation();document.querySelector("#gallery")?.scrollIntoView({behavior:"smooth",block:"start"});history.replaceState(null,"","#gallery");},true);
+
+// Add Waraka production portfolio QR/link above the profile inquiry text.
+(function(){
+  const businessContact=document.querySelector('.business-contact');
+  if(!businessContact||businessContact.querySelector('.waraka-portfolio-contact'))return;
+
+  if(!document.getElementById('waraka-portfolio-contact-style')){
+    const style=document.createElement('style');
+    style.id='waraka-portfolio-contact-style';
+    style.textContent=`
+      .business-contact a.waraka-portfolio-contact{display:flex!important;align-items:center;gap:14px;max-width:440px;margin:0 0 16px;padding:14px;border:1px solid var(--line);background:rgba(217,244,81,.055);color:var(--paper);font:inherit;text-decoration:none;box-shadow:8px 8px 0 rgba(0,0,0,.22)}
+      .business-contact a.waraka-portfolio-contact:hover{border-color:var(--lime);background:rgba(217,244,81,.11);color:var(--paper)}
+      .waraka-portfolio-qr{width:76px;height:76px;flex:0 0 76px;background:#fff;padding:6px;display:block}
+      .waraka-portfolio-qr img{width:100%;height:100%;object-fit:contain;display:block}
+      .waraka-portfolio-copy{display:flex;min-width:0;flex-direction:column;gap:4px}
+      .waraka-portfolio-label{color:var(--lime);font:500 13px/1.4 "Zen Old Mincho",serif;letter-spacing:.06em}
+      .waraka-portfolio-copy strong{width:max-content;max-width:100%;font:12px/1.4 "DM Mono",monospace;border-bottom:1px solid currentColor;padding-bottom:2px;overflow-wrap:anywhere}
+      .waraka-portfolio-copy small{color:#d8dad3;font:12px/1.65 "Zen Old Mincho",serif}
+      @media(max-width:850px){.profile-contact{margin-top:190px}.business-contact a.waraka-portfolio-contact{gap:12px;padding:12px}.waraka-portfolio-qr{width:64px;height:64px;flex-basis:64px}.waraka-portfolio-label{font-size:12px}.waraka-portfolio-copy strong{font-size:10px}.waraka-portfolio-copy small{font-size:11px}}
+    `;
+    document.head.append(style);
+  }
+
+  const block=document.createElement('a');
+  block.className='waraka-portfolio-contact';
+  block.href='https://waraka2026.github.io/';
+  block.target='_blank';
+  block.rel='noopener noreferrer';
+  block.innerHTML=`<span class="waraka-portfolio-qr"><img src="assets/waraka-portfolio-qr.svg" alt="制作メインのポートフォリオ QRコード"></span><span class="waraka-portfolio-copy"><span class="waraka-portfolio-label">制作メインのポートフォリオ</span><strong>waraka2026.github.io</strong><small>Web制作・AIコンテンツ・LINEスタンプなどはこちら</small></span>`;
+  businessContact.prepend(block);
+})();
