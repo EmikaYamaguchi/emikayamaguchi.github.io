@@ -36,5 +36,5 @@ body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-act
 @media(max-width:900px){.emika-services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:850px){.emika-services{padding:30px 5vw 34px}.emika-services-inner{padding:20px}.emika-services-head{display:block}.emika-services-head h2{margin-top:8px;font-size:34px}.emika-services-grid{grid-template-columns:1fr}.emika-services-grid article{min-height:0}}
 
-.profile-title-row{display:flex;align-items:center;gap:clamp(18px,2vw,30px);margin-top:28px}.profile-title-row h1{margin:0}.profile-avatar{width:clamp(96px,9vw,138px);height:clamp(96px,9vw,138px);flex:0 0 auto;border-radius:50%;object-fit:cover;object-position:center 38%;border:3px solid var(--paper);box-shadow:0 0 0 2px var(--lime),10px 10px 0 rgba(0,0,0,.38)}
-@media(max-width:850px){.profile-title-row{gap:18px;margin-top:28px}.profile-title-row h1{margin:0}.profile-avatar{width:100px;height:100px}}
+.profile-title-row{display:flex;align-items:center;gap:clamp(18px,2vw,30px);margin-top:28px}.profile-title-row h1{margin:0;font-size:clamp(44px,3.6vw,58px)}.profile-avatar{width:clamp(84px,7.5vw,112px);height:clamp(84px,7.5vw,112px);flex:0 0 auto;border-radius:50%;object-fit:cover;object-position:center 38%;border:3px solid var(--paper);box-shadow:0 0 0 2px var(--lime),10px 10px 0 rgba(0,0,0,.38)}
+@media(max-width:850px){.profile-title-row{gap:14px;margin-top:28px}.profile-title-row h1{margin:0;font-size:42px}.profile-avatar{width:84px;height:84px}}
