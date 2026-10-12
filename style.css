@@ -49,6 +49,15 @@ body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-act
   .activity-card>div>footer{order:3;margin:0;padding:22px}
 }
 
-/* Waraka official LINE QR above the profile inquiry text */
-.business-contact::before{content:"アプリ開発・LINEスタンプ・ブログなどもやっています\A お問い合わせはこちらまで";display:block;min-height:180px;margin:0 0 16px;padding:14px 14px 14px 184px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line);background:rgba(217,244,81,.055) url("assets/waraka-line-qr.png") 14px center/152px 152px no-repeat;color:var(--paper);white-space:pre-line;font:13px/1.65 "Zen Old Mincho",serif;box-shadow:8px 8px 0 rgba(0,0,0,.22)}
-@media(max-width:850px){.profile-contact{margin-top:300px}.business-contact::before{min-height:152px;margin-bottom:14px;padding:12px 12px 12px 152px;background-size:128px 128px;background-position:12px center;font-size:12px}}
+/* Waraka official LINE QR card above the profile inquiry text */
+.profile-contact{margin-top:40px!important;padding-top:0;border-top:0}
+.business-contact{position:static;width:100%;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.line-card{display:flex;align-items:center;gap:20px;max-width:520px;margin:0 0 18px;padding:14px;border:1px solid var(--line);background:rgba(217,244,81,.055);box-shadow:8px 8px 0 rgba(0,0,0,.22)}
+.line-card img{width:152px;height:152px;flex:0 0 152px;object-fit:contain}
+.line-card-text{min-width:0;color:var(--paper);font:13px/1.8 "Zen Old Mincho",serif}
+.line-card-text p{margin:0}
+.line-card-text span{display:inline-block}
+@media(max-width:1180px){.line-card{gap:16px}.line-card img{width:128px;height:128px;flex-basis:128px}}
+@media(max-width:850px){.line-card{gap:14px;padding:12px}.line-card img{width:120px;height:120px;flex-basis:120px}.line-card-text{font-size:12px}}
+
+@media(max-width:850px){.profile-contact{margin-top:300px}}
