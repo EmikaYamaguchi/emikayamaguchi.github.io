@@ -245,12 +245,15 @@
   <div class="lightbox" id="lightbox" aria-hidden="true"><button type="button" aria-label="閉じる">×</button><img src="" alt="拡大した写真"><p></p></div>
   <script>
     const links=document.querySelectorAll('[data-panel-link]'),panels=document.querySelectorAll('[data-panel]');
-    function openPanel(id){panels.forEach(p=>p.classList.toggle('is-active',p.dataset.panel===id));links.forEach(l=>l.classList.toggle('is-current',l.dataset.panelLink===id));history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});}
+    function openPanel(id){panels.forEach(p=>p.classList.toggle('is-active',p.dataset.panel===id));links.forEach(l=>l.classList.toggle('is-current',l.dataset.panelLink===id));history.replaceState(null,'','#'+id);if(id==='gallery'){scrollToGallery('smooth');}else{window.scrollTo({top:0,behavior:'smooth'});}}
+    function scrollToGallery(behavior){const g=document.getElementById('gallery');if(!g)return;const head=document.querySelector('.topbar');const nav=window.matchMedia('(max-width:850px)').matches?48:0;const offset=(head?head.offsetHeight:72)+nav;window.scrollTo({top:g.getBoundingClientRect().top+window.scrollY-offset,behavior:behavior||'auto'});}
     document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openPanel(b.dataset.open)));
     links.forEach(l=>l.addEventListener('click',e=>{e.preventDefault();openPanel(l.dataset.panelLink)}));
     document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('is-selected'));b.classList.add('is-selected');document.querySelectorAll('.shot').forEach(s=>s.hidden=b.dataset.filter!=='all'&&!s.classList.contains(b.dataset.filter));}));
     const box=document.querySelector('#lightbox'),boxImage=box.querySelector('img'),boxLabel=box.querySelector('p');document.querySelectorAll('.shot').forEach((s,i)=>s.addEventListener('click',()=>{boxImage.src=s.querySelector('img').src;boxImage.alt=s.querySelector('img').alt;boxLabel.textContent=s.dataset.title||s.querySelector('img').alt;box.classList.add('open');box.setAttribute('aria-hidden','false')}));box.querySelector('button').addEventListener('click',()=>{box.classList.remove('open');box.setAttribute('aria-hidden','true')});
-    if(location.hash&&document.querySelector('[data-panel="'+location.hash.slice(1)+'"]'))openPanel(location.hash.slice(1));
+    if('scrollRestoration' in history)history.scrollRestoration='manual';
+    if(location.hash==='#gallery'){openPanel('gallery');scrollToGallery('auto');window.addEventListener('load',()=>scrollToGallery('auto'));setTimeout(()=>scrollToGallery('auto'),600);}
+    else if(location.hash&&document.querySelector('[data-panel="'+location.hash.slice(1)+'"]'))openPanel(location.hash.slice(1));
   </script>
 </body>
 </html>
