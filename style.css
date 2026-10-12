@@ -72,3 +72,5 @@ body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-act
 .nineboard-activity .nineboard-links{display:flex;flex-direction:column;gap:8px;margin-left:6px}
 .nineboard-activity .nineboard-links small{color:var(--muted);font-size:10px;letter-spacing:.06em}
 @media(max-width:850px){.nineboard-activity>img{height:340px!important;max-height:none}.nineboard-activity footer a.nineboard-qr img{width:104px!important;height:104px!important}.nineboard-activity .nineboard-links{margin-left:0;width:100%}}
+.line-card .line-card-qr{display:block!important;flex:0 0 auto;line-height:0;border:0!important;padding:0!important;transition:opacity .2s}
+.line-card .line-card-qr:hover{opacity:.85}
