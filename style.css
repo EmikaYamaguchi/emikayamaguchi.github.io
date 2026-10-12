@@ -61,3 +61,16 @@ body:has(.profile-panel.is-active) .gallery-panel,body:has(.gallery-panel.is-act
 @media(max-width:850px){.line-card{gap:14px}.line-card img{width:120px;height:120px;flex-basis:120px}.line-card-text{font-size:12px}}
 
 @media(max-width:850px){.profile-contact{margin-top:300px}}
+
+/* 9board activity card */
+.nineboard-activity>img{object-fit:contain;padding:18px 0;max-height:420px}
+.nineboard-activity h3.nineboard-title{margin:18px 0 14px;line-height:0}
+.nineboard-activity h3.nineboard-title img{width:min(100%,360px);height:auto;background:transparent;padding:0}
+.nineboard-activity strong{color:#d8dad3!important;font-size:14px!important}
+.nineboard-activity footer{flex-wrap:wrap;gap:14px!important}
+.nineboard-activity footer a.nineboard-qr{display:block;border-radius:10px;overflow:hidden;transition:transform .2s}
+.nineboard-activity footer a.nineboard-qr:hover{transform:translateY(-2px)}
+.nineboard-activity footer a.nineboard-qr img{width:118px!important;height:118px!important;background:#fff}
+.nineboard-activity .nineboard-links{display:flex;flex-direction:column;gap:8px;margin-left:6px}
+.nineboard-activity .nineboard-links small{color:var(--muted);font-size:10px;letter-spacing:.06em}
+@media(max-width:850px){.nineboard-activity>img{height:340px!important;max-height:none}.nineboard-activity h3.nineboard-title img{width:min(100%,280px)}.nineboard-activity footer a.nineboard-qr img{width:104px!important;height:104px!important}.nineboard-activity .nineboard-links{margin-left:0;width:100%}}
